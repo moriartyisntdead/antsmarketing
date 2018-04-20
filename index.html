@@ -8,6 +8,8 @@
     <script src="js/app.min.js"></script>
 </head>
 <body>
+
+
 <header>
     <div class="bg">
         <div class="container">
@@ -190,16 +192,20 @@
             Оставьте свои контакты, чтобы получить бесплатную консультацию о Вашем проекте от наших экспертов
         </div>
         <div class="row">
-            <div class="col-lg-4">
-                <input type="text" class="white-input" placeholder="Ваше имя">
-            </div>
-            <div class="col-lg-4">
-                <input type="text" class="white-input" placeholder="Ваш e-mail">
-            </div>
-            <div class="col-lg-4">
-                <input type="text" class="white-input" placeholder="Ваш телефон">
-            </div>
-            <a href="javascript:void(0)" class="btn">Записаться на консультацию</a>
+            <form  method="post" action="/test.php" enctype="multipart/form-data" accept-charset="UTF-8" id="contact-form">
+                <div class="col-lg-4">
+                    <input type="text" class="white-input" placeholder="Ваше имя" name="fName">
+                </div>
+                <div class="col-lg-4">
+                    <input type="text" class="white-input" placeholder="Ваш e-mail"  name="email">
+                </div>
+                <div class="col-lg-4">
+                    <input type="text" class="white-input" placeholder="Ваш телефон" name="tel">
+                </div>
+                <button type="submit"  name="submit"   class="btn">Записаться на консультацию</button>
+            </form>
+
+
         </div>
     </div>
     <footer class="bg" id="feedback_form">
@@ -212,5 +218,13 @@
         </div>
     </footer>
 </section>
+<!--<div>-->
+    <!--<script id="salesdrive_forms_params_1">var salesdrive_forms_params_1 = {"id": "1", "hash": "2LAOjVzSTv7wXw-11aO1DJCRe1C4iizp", "modal": "n", "locale": "ru", "defaults": {"submit": "", "sd-form-title": "", "fName": "", "email": "", "tel": ""}};-->
+    <!--</script><script forms-id="1" id="salesdriveforms_script" async="async" src="https://static.salesdrive.me/salesdriveforms/assets/js/salesdriveforms.js"-->
+    <!--</script>-->
+<!--</div>-->
+
+
+
 </body>
 </html>
