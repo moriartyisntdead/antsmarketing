@@ -43,6 +43,8 @@
   border-radius: 0;
   min-width: 350px;
   transition: all 0.3s ease;
+  outline: none;
+  background-color: transparent;
   &:hover {
     font-weight: bold;
     background-color: #fc0;
@@ -179,7 +181,8 @@ header {
 }
 
 .section-1 {
-  height: 800px;
+  //height: 800px;
+  height: 900px;
   position: relative;
   text-align: center;
   .container {
@@ -198,10 +201,11 @@ header {
     position: relative;
     left: 442px;
     top: 84px;
+    display: none;
   }
   .ants-title {
     margin: 0 auto;
-    padding-top: 92px;
+    padding-top: 246px;
     font-family: BronxBystreets;
     font-size: 120px;
     color: #ffcc00;
