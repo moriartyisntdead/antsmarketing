@@ -10,27 +10,30 @@ var gulp = require('gulp'),
     watch = require('gulp-watch');
 
 
-gulp.task('js:build', function () {
-    gulp.src([
-        'js/jquery-3.3.1.min.js',
-        'js/parallax.min.js',
-        'js/particles.min.js',
-        'js/script.js'
-    ])
-    //.pipe(uglify({
+var scriptsSrc = [
+    'js/jquery-3.3.1.min.js',
+    // 'js/parallax.min.js',
+    'js/particles.min.js',
+    'js/script.js'
+];
 
-    //}))
+var stylesSrc = [
+    'css/bootstrap.min.css',
+    'css/style.scss'
+];
+
+gulp.task('js:build', function () {
+    gulp.src(scriptsSrc)
+    .pipe(uglify({
+
+    }))
         .pipe(concat('app.min.js')) // Объединяет всё в один файл
         .pipe(gulp.dest('js'))
 });
 
 
 gulp.task('style:build', function () {
-    gulp.src([
-        'css/bootstrap.min.css',
-        // 'css/fonts.css',
-        'css/style.scss'
-    ])
+    gulp.src(stylesSrc)
         .pipe(sass().on('error', sass.logError)) // Компилирует SCSS
         .pipe(concat('app.min.css')) // Объединяет всё в один файл
         .pipe(postcss([
@@ -42,5 +45,25 @@ gulp.task('style:build', function () {
 
 
 gulp.task('default', ['js:build', 'style:build'], function () {
+    console.log('Success!');
+});
+
+
+gulp.task('dev:js:build', function () {
+    gulp.src(scriptsSrc)
+        .pipe(concat('app.min.js')) // Объединяет всё в один файл
+        .pipe(gulp.dest('js'))
+});
+
+
+gulp.task('dev:style:build', function () {
+    gulp.src(stylesSrc)
+        .pipe(sass().on('error', sass.logError)) // Компилирует SCSS
+        .pipe(concat('app.min.css')) // Объединяет всё в один файл
+        .pipe(gulp.dest('css'))
+});
+
+
+gulp.task('dev', ['dev:js:build', 'dev:style:build'], function () {
     console.log('Success!');
 });

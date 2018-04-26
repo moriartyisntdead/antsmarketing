@@ -1,11 +1,8 @@
 $(function () {
-    if (typeof ($.fn.parallax) !== 'undefined') {
-        $('.section-3').parallax({imageSrc: '../img/forest.jpg'});
-    }
-
+    //document.body.style.zoom="90%"
     //1st canvas
-    let canvasDots_1 = function () {
-        let canvas = document.querySelector('.section-2 canvas'),
+    var canvasDots_1 = function () {
+        var canvas = document.querySelector('.section-2 canvas'),
             ctx = canvas.getContext('2d'),
             colorDot = '#fc0',
             color = '#fc0',
@@ -17,17 +14,18 @@ $(function () {
         ctx.lineWidth = .3;
         ctx.strokeStyle = color;
 
-        let mousePosition = {
+        var mousePosition = {
             x: 15 * canvas.width / 100,
             y: 15 * canvas.height / 100
         };
 
-        let dots = {
-            nb: 350,
-            distance: 70,
-            d_radius: 150,
-            array: []
-        };
+        /*var dots = {
+         nb: 200,//575 - 200
+         distance: 40,//70 |991 - 40|
+         d_radius: 80,//150 |991 - 80|
+         array: []
+         };*/
+        var dots = canvasSettings();
 
         function Dot() {
             this.x = Math.random() * canvas.width;
@@ -49,7 +47,7 @@ $(function () {
             animate: function () {
                 for (i = 0; i < dots.nb; i++) {
 
-                    let dot = dots.array[i];
+                    var dot = dots.array[i];
 
                     if (dot.y < 0 || dot.y > canvas.height) {
                         dot.vx = dot.vx;
@@ -98,7 +96,7 @@ $(function () {
         }
 
         $('.section-2 .container').on('mousemove', function (e) {
-            let parentOffset = $canvas.offset();
+            var parentOffset = $canvas.offset();
             mousePosition.x = e.pageX - parentOffset.left;
             mousePosition.y = e.pageY - parentOffset.top;
         });
@@ -109,8 +107,8 @@ $(function () {
         setInterval(createDots, 1000 / 30);
     };
     //2nd canvas
-    let canvasDots_2 = function () {
-        let canvas = document.querySelector('.section-4 canvas'),
+    var canvasDots_2 = function () {
+        var canvas = document.querySelector('.section-4 canvas'),
             ctx = canvas.getContext('2d'),
             colorDot = '#fc0',
             color = '#fc0',
@@ -122,17 +120,18 @@ $(function () {
         ctx.lineWidth = .3;
         ctx.strokeStyle = color;
 
-        let mousePosition = {
+        var mousePosition = {
             x: 15 * canvas.width / 100,
             y: 15 * canvas.height / 100
         };
 
-        let dots = {
-            nb: 350,
-            distance: 70,
-            d_radius: 150,
-            array: []
-        };
+        /*var dots = {
+         nb: 200,//575 - 200
+         distance: 40,//70 |991 - 40|
+         d_radius: 80,//150 |991 - 80|
+         array: []
+         };*/
+        var dots = canvasSettings();
 
         function Dot() {
             this.x = Math.random() * canvas.width;
@@ -154,7 +153,7 @@ $(function () {
             animate: function () {
                 for (i = 0; i < dots.nb; i++) {
 
-                    let dot = dots.array[i];
+                    var dot = dots.array[i];
 
                     if (dot.y < 0 || dot.y > canvas.height) {
                         dot.vx = dot.vx;
@@ -203,7 +202,7 @@ $(function () {
         }
 
         $('.section-4 .container').on('mousemove', function (e) {
-            let parentOffset = $canvas.offset();
+            var parentOffset = $canvas.offset();
             mousePosition.x = e.pageX - parentOffset.left;
             mousePosition.y = e.pageY - parentOffset.top;
         });
@@ -214,13 +213,29 @@ $(function () {
         setInterval(createDots, 1000 / 30);
     };
 
-    window.onload = function () {
-        canvasDots_1();
-        canvasDots_2();
-    };
+    canvasDots_1();
+    canvasDots_2();
+
+    $('#mouse-link').on('click', function () {
+        var href = $(this).attr('href');
+        href = href.substring(href.indexOf('#'));
+        var top = $(href).offset().top - $('.section-2').height() / 4;
+        $('body,html').animate({scrollTop: top}, 800);
+    });
+
+    $('.scroll-down').on('click', function () {
+        var href = $(this).attr('href');
+        href = href.substring(href.indexOf('#'));
+        var top = $(href).offset().top;
+        if ($('.scroll-down').parent('.pull-right')) {
+            $('body,html').animate({scrollTop: top}, 2000);
+        } else {
+            $('body,html').animate({scrollTop: top}, 1000);
+        }
+    });
 
     $('#form_submit').on('click', function () {
-       send_form();
+        send_form();
     });
 
     function send_form() {
@@ -240,5 +255,23 @@ $(function () {
                 alert('Произошла ошибка!');
             }
         });
+    }
+
+    function canvasSettings() {
+        var screenWidth = screen.width, dots = {};
+        if (screenWidth <= 991 && screenWidth > 575) {
+            dots = {
+                nb: 200, distance: 40, d_radius: 80, array: []
+            };
+        } else if (screenWidth <= 575) {
+            dots = {
+                nb: 200, distance: 40, d_radius: 80, array: []
+            };
+        } else {
+            dots = {
+                nb: 350, distance: 70, d_radius: 150, array: []
+            };
+        }
+        return dots;
     }
 });
