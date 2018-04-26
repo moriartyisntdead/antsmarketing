@@ -19,12 +19,6 @@ $(function () {
             y: 15 * canvas.height / 100
         };
 
-        /*var dots = {
-         nb: 200,//575 - 200
-         distance: 40,//70 |991 - 40|
-         d_radius: 80,//150 |991 - 80|
-         array: []
-         };*/
         var dots = canvasSettings();
 
         function Dot() {
@@ -95,7 +89,7 @@ $(function () {
             dot.animate();
         }
 
-        $('.section-2 .container').on('mousemove', function (e) {
+        $('.section-2').on('mousemove', function (e) {
             var parentOffset = $canvas.offset();
             mousePosition.x = e.pageX - parentOffset.left;
             mousePosition.y = e.pageY - parentOffset.top;
@@ -125,12 +119,6 @@ $(function () {
             y: 15 * canvas.height / 100
         };
 
-        /*var dots = {
-         nb: 200,//575 - 200
-         distance: 40,//70 |991 - 40|
-         d_radius: 80,//150 |991 - 80|
-         array: []
-         };*/
         var dots = canvasSettings();
 
         function Dot() {
@@ -201,7 +189,7 @@ $(function () {
             dot.animate();
         }
 
-        $('.section-4 .container').on('mousemove', function (e) {
+        $('.section-4').on('mousemove', function (e) {
             var parentOffset = $canvas.offset();
             mousePosition.x = e.pageX - parentOffset.left;
             mousePosition.y = e.pageY - parentOffset.top;
@@ -265,7 +253,7 @@ $(function () {
             };
         } else if (screenWidth <= 575) {
             dots = {
-                nb: 200, distance: 40, d_radius: 80, array: []
+                nb: 200, distance: 5/*40*/, d_radius: 10/*80*/, array: []
             };
         } else {
             dots = {
