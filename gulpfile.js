@@ -14,6 +14,9 @@ var scriptsSrc = [
     'js/jquery-3.3.1.min.js',
     // 'js/parallax.min.js',
     'js/particles.min.js',
+    'js/sweetalert2.all.min.js',
+    'js/jquery.validate.js',
+    'js/jquery.mask.min.js',
     'js/script.js'
 ];
 

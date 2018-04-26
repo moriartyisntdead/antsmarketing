@@ -234,28 +234,28 @@ $(function () {
         }
     });
 
-    $('#form_submit').on('click', function () {
-        send_form();
-    });
+    // $('#form_submit').on('click', function () {
+    //     send_form();
+    // });
 
-    function send_form() {
-        $.ajax({
-            url: "/test.php",
-            type: "POST",
-            data: {
-                fName: $('#fName').val(),
-                email: $('#email').val(),
-                tel: $('#tel').val(),
-                submit: 1
-            },
-            success: function (data) {
-                alert("Спасибо! Мы уже обрабатываем Вашу заявку и в ближайшее время свяжемся с Вами.");
-            },
-            error: function (data) {
-                alert('Произошла ошибка!');
-            }
-        });
-    }
+    // function send_form() {
+    //     $.ajax({
+    //         url: "/test.php",
+    //         type: "POST",
+    //         data: {
+    //             fName: $('#fName').val(),
+    //             email: $('#email').val(),
+    //             tel: $('#tel').val(),
+    //             submit: 1
+    //         },
+    //         success: function (data) {
+    //             alert("Спасибо! Мы уже обрабатываем Вашу заявку и в ближайшее время свяжемся с Вами.");
+    //         },
+    //         error: function (data) {
+    //             alert('Произошла ошибка!');
+    //         }
+    //     });
+    // }
 
     function canvasSettings() {
         var screenWidth = screen.width, dots = {};
@@ -274,4 +274,90 @@ $(function () {
         }
         return dots;
     }
+
+
+
+
+    jQuery('#tel').mask('380000000000');
+    $.validator.addMethod("letters", function(value, element) {
+        return this.optional(element) || value == value.match(/^[\-a-zA-ZА-ЯЁа-яё\s]*$/);
+    });
+
+    $('#contact-form').validate({
+        rules: {
+            fName: {
+                required: true,
+                minlength: 2,
+                letters: true
+            },
+            tel: {
+                required: true,
+                minlength: 12,
+                maxlength: 12,
+                digits: true
+            },
+            email: {
+                required: true,
+                email: true
+            }
+        },
+        messages: {
+            fName: {
+                required: "Введите имя",
+                letters: "Введите только буквы",
+                minlength: "Введите минимум 2 буквы"
+            },
+            tel: "Введите номер телефона",
+            email: "Введите правильный email адрес",
+
+        },
+        errorElement: 'div',
+        errorLabelContainer: '.errorTxt',
+        errorPlacement: function (error, element) {
+            var placement = $(element).data('error');
+            if (placement) {
+                $(placement).append(error)
+            } else {
+                error.insertAfter(element);
+            }
+        },
+        submitHandler: function (form) {
+            $.ajax({
+                url: "/test.php",
+                type: "POST",
+                data: {
+                    fName: $('#fName').val(),
+                    email: $('#email').val(),
+                    tel: $('#tel').val(),
+                    submit: 1
+                },
+                success: function (data) {
+                    swal({
+                        text: 'Спасибо! Мы уже обрабатываем Вашу заявку и в ближайшее время свяжемся с Вами.',
+                        type: 'success',
+                        confirmButtonText: 'Отлично',
+                        buttonsStyling: 'false',
+                        confirmButtonClass: 'btn'
+                    });
+
+                         $('#fName').val('');
+                         $('#email').val('');
+                         $('#tel').val('');
+                },
+                error: function (data) {
+                    swal({
+                        text: 'Произошла ошибка!',
+                        type: 'error',
+                        confirmButtonText: 'Повторить'
+                    })
+                }
+            });
+        }
+    });
+
+
+
+
+
+
 });

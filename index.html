@@ -197,15 +197,21 @@
         <form class="row" method="post" action="/test.php" enctype="multipart/form-data" accept-charset="UTF-8"
               id="contact-form">
             <div class="col-lg-4">
-                <input type="text" class="white-input" placeholder="Ваше имя" name="fName" id="fName">
+                <input type="text" class="white-input" placeholder="Ваше имя" name="fName" id="fName" data-error="#error-name">
+                <div id="error-name"></div>
+
             </div>
             <div class="col-lg-4">
-                <input type="text" class="white-input" placeholder="Ваш e-mail" name="email" id="email">
+                <input type="text" class="white-input" placeholder="Ваш e-mail" name="email" id="email" data-error="#error-email">
+                <div id="error-email"></div>
+
             </div>
             <div class="col-lg-4">
-                <input type="text" class="white-input" placeholder="Ваш телефон" name="tel" id="tel">
+                <input type="text" class="white-input" placeholder="Ваш телефон" name="tel" id="tel" data-error="#error-tel">
+                <div id="error-tel"></div>
+
             </div>
-            <a href="#!" id="form_submit" class="btn">Записаться на консультацию</a>
+            <button href="#!" id="form_submit" class="btn">Записаться на консультацию</button>
         </form>
     </div>
     <footer class="bg" id="feedback_form">
