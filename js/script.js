@@ -264,10 +264,8 @@ $(function () {
     }
 
 
-
-
     jQuery('#tel').mask('380000000000');
-    $.validator.addMethod("letters", function(value, element) {
+    $.validator.addMethod("letters", function (value, element) {
         return this.optional(element) || value == value.match(/^[\-a-zA-ZА-ЯЁа-яё\s]*$/);
     });
 
@@ -323,14 +321,11 @@ $(function () {
                     swal({
                         text: 'Спасибо! Мы уже обрабатываем Вашу заявку и в ближайшее время свяжемся с Вами.',
                         type: 'success',
-                        confirmButtonText: 'Отлично',
-                        buttonsStyling: 'false',
-                        confirmButtonClass: 'btn'
+                        confirmButtonText: 'Отлично'
                     });
-
-                         $('#fName').val('');
-                         $('#email').val('');
-                         $('#tel').val('');
+                    $('#fName').val('');
+                    $('#email').val('');
+                    $('#tel').val('');
                 },
                 error: function (data) {
                     swal({
@@ -342,10 +337,4 @@ $(function () {
             });
         }
     });
-
-
-
-
-
-
 });
