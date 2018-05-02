@@ -207,8 +207,8 @@ $(function () {
     $('#mouse-link').on('click', function () {
         var href = $(this).attr('href');
         href = href.substring(href.indexOf('#'));
-        var top = $(href).offset().top - $('.section-2').height() / 4;
-        var top = $(href).offset().top - $('.section-2').height() / 4;
+        var top = $(href).offset().top - $('.mouse-wrap').height() / 1.8;
+        // var top = $(href).offset().top - $('.section-2').height() / 4;
         $('body,html').animate({scrollTop: top}, 800);
     });
 
