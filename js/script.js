@@ -208,6 +208,7 @@ $(function () {
         var href = $(this).attr('href');
         href = href.substring(href.indexOf('#'));
         var top = $(href).offset().top - $('.section-2').height() / 4;
+        var top = $(href).offset().top - $('.section-2').height() / 4;
         $('body,html').animate({scrollTop: top}, 800);
     });
 
@@ -221,29 +222,6 @@ $(function () {
             $('body,html').animate({scrollTop: top}, 1000);
         }
     });
-
-    // $('#form_submit').on('click', function () {
-    //     send_form();
-    // });
-
-    // function send_form() {
-    //     $.ajax({
-    //         url: "/test.php",
-    //         type: "POST",
-    //         data: {
-    //             fName: $('#fName').val(),
-    //             email: $('#email').val(),
-    //             tel: $('#tel').val(),
-    //             submit: 1
-    //         },
-    //         success: function (data) {
-    //             alert("Спасибо! Мы уже обрабатываем Вашу заявку и в ближайшее время свяжемся с Вами.");
-    //         },
-    //         error: function (data) {
-    //             alert('Произошла ошибка!');
-    //         }
-    //     });
-    // }
 
     function canvasSettings() {
         var screenWidth = screen.width, dots = {};
@@ -294,7 +272,7 @@ $(function () {
                 minlength: "Введите минимум 2 буквы"
             },
             tel: "Введите номер телефона",
-            email: "Введите правильный email адрес",
+            email: "Введите правильный email адрес"
 
         },
         errorElement: 'div',
