@@ -359,11 +359,11 @@ header {
     align-items: flex-end;
     position: relative;
     div {
-      z-index: 999;
+      z-index: 1;
     }
   }
   img {
-    z-index: 999;
+    z-index: 1;
   }
   .sign {
     align-self: center;
@@ -642,11 +642,11 @@ header {
     font-size: 50px;
     color: #333;
     text-transform: uppercase;
-    z-index: 999;
+    z-index: 1;
   }
   .container {
     div {
-      z-index: 999;
+      z-index: 1;
     }
     display: flex;
     flex-direction: row;
@@ -687,6 +687,7 @@ header {
     color: #333333;
     max-width: 350px;
     margin: auto auto 0;
+    z-index: 1;
   }
   @media (max-width: 1199px) {
     padding-top: 64px;
@@ -1063,7 +1064,7 @@ footer {
   position: absolute;
   margin: 0 auto;
   bottom: -132px;
-  z-index: 999;
+  z-index: 1;
 }
 
 .mouse-line {
@@ -1324,7 +1325,7 @@ footer {
 }
 
 @media (max-width: 767px) {
-  .mouse-wrap{
+  .mouse-wrap {
     bottom: -106px;
   }
   .mouse {
@@ -1399,8 +1400,8 @@ footer {
   }
 }
 
-@media (max-width: 575px){
-  .mouse{
+@media (max-width: 575px) {
+  .mouse {
 
   }
 }
@@ -1410,6 +1411,7 @@ footer {
 /***************************************/
 /*         Ошибки валидации            */
 /***************************************/
+
 .error {
   color: #ff2424;
 }
@@ -1438,6 +1440,7 @@ footer {
 /***************************************/
 /*        Submit btn in popup          */
 /***************************************/
+
 .swal2-popup .swal2-styled.swal2-confirm {
   border-radius: 0 !important;
   background-color: #ffffff !important;
@@ -1460,4 +1463,184 @@ footer {
     outline: none;
     box-shadow: none;
   }
+}
+
+/***************************************/
+/*             Preloader               */
+/***************************************/
+
+#holder {
+  align-items: center;
+  background: #fff;
+  display: flex;
+  height: 100%;
+  justify-content: center;
+  flex-direction: column;
+  margin: 0;
+  position: fixed;
+  width: 100%;
+  z-index: 999;
+  .logo {
+    margin-bottom: 25px;
+    max-width: 300px;
+  }
+}
+
+.filter {
+  position: absolute;
+  visibility: hidden;
+}
+
+.dots {
+  filter: url(#gooeyness);
+  padding: 30px;
+}
+
+.dot {
+  background: #FFCC00;
+  border-radius: 50%;
+  display: inline-block;
+  margin-right: 20px;
+  width: 32px;
+  height: 32px;
+  @media(max-width: 340px) {
+    width: 25px;
+    height: 25px;
+  }
+}
+
+.dot:first-child {
+  animation: FirstDot 3s infinite;
+}
+
+.dot:nth-child(2) {
+  animation: SecondDot 3s infinite;
+}
+
+.dot:nth-child(3) {
+  animation: ThirdDot 3s infinite;
+}
+
+.dot:nth-child(4) {
+  animation: FourthDot 3s infinite;
+}
+
+.dot:nth-child(5) {
+  animation: FifthDot 3s infinite;
+}
+
+@keyframes FirstDot {
+  0% {
+    transform: scale(1) translateX(0);
+  }
+  25% {
+    transform: scale(2.5) translateX(0);
+  }
+  50% {
+    transform: scale(1) translateX(0);
+  }
+  83% {
+    transform: scale(1) translateX(240px);
+  }
+  100% {
+    transform: scale(1) translateX(0);
+  }
+}
+
+@keyframes SecondDot {
+  0% {
+    transform: translateX(0px);
+  }
+  27% {
+    transform: translateX(-40px);
+  }
+  50% {
+    transform: translateX(0px);
+  }
+  81% {
+    transform: translateX(180px);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+
+@keyframes ThirdDot {
+  0% {
+    transform: translateX(0px);
+  }
+  29% {
+    transform: translateX(-100px);
+  }
+  50% {
+    transform: translateX(0px);
+  }
+  79% {
+    transform: translateX(120px);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+
+@keyframes FourthDot {
+  0% {
+    transform: translateX(0px);
+  }
+  31% {
+    transform: translateX(-160px);
+  }
+  50% {
+    transform: translateX(0px);
+  }
+  77% {
+    transform: translateX(60px);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+
+@keyframes FifthDot {
+  0% {
+    transform: scale(1) translateX(0);
+  }
+  33% {
+    transform: scale(1) translateX(-220px);
+  }
+  50% {
+    transform: scale(1) translateX(0);
+  }
+  75% {
+    transform: scale(2.5) translateX(0);
+  }
+  100% {
+    transform: scale(1) translateX(0);
+  }
+}
+
+/***************************************/
+/*          From animate.css           */
+/***************************************/
+
+.animated.bounceOut {
+  animation-duration: .75s
+}
+
+@keyframes bounceOut {
+  20% {
+    transform: scale3d(.9, .9, .9)
+  }
+  50%, 55% {
+    opacity: 1;
+    transform: scale3d(1.1, 1.1, 1.1)
+  }
+  to {
+    opacity: 0;
+    transform: scale3d(.3, .3, .3)
+  }
+}
+
+.bounceOut {
+  animation-name: bounceOut
 }

@@ -1,4 +1,11 @@
 @font-face {
+    font-family: "BronxBystreets";
+    src: url("../fonts/BronxBystreets.otf")format("opentype");
+    font-style: normal;
+    font-weight: normal;
+}
+
+@font-face {
     font-family: "SegoeUIRegular";
     src: url("../fonts/SegoeUIRegular.eot");
     src: url("../fonts/SegoeUIRegular.eot?#iefix")format("embedded-opentype"),
@@ -44,20 +51,6 @@
     src: url("../fonts/SegoeUISemiBold.eot?#iefix")format("embedded-opentype"),
     url("../fonts/SegoeUISemiBold.woff") format("woff"),
     url("../fonts/SegoeUISemiBold.ttf") format("truetype");
-    font-style: normal;
-    font-weight: normal;
-}
-
-@font-face {
-    font-family: "BronxBystreets";
-    src: url("../fonts/BronxBystreets.otf")format("opentype");
-    font-style: normal;
-    font-weight: normal;
-}
-
-@font-face {
-    font-family: "BronxBystreets";
-    src: url("../fonts/BronxBystreets.otf")format("opentype");
     font-style: normal;
     font-weight: normal;
 }

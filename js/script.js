@@ -1,5 +1,6 @@
 $(function () {
     //document.body.style.zoom="90%"
+    $("video[autoplay]").each(function(){ this.play(); });
     //1st canvas
     var canvasDots_1 = function () {
         var canvas = document.querySelector('.section-2 canvas'),
@@ -296,6 +297,10 @@ $(function () {
                     submit: 1
                 },
                 success: function (data) {
+                    //google tag manager
+                    if (typeof window['gtag'] === 'function') window['gtag']('event', 'send', {"event_category": 'form'});
+                    else if (typeof window['ga'] === 'function') window['ga']('send', 'event', 'form', 'send');
+
                     swal({
                         text: 'Спасибо! Мы уже обрабатываем Вашу заявку и в ближайшее время свяжемся с Вами.',
                         type: 'success',

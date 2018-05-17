@@ -5,18 +5,48 @@
     <meta name="viewport" content="width=device-width">
     <!--<meta name="format-detection" content="telephone=no">-->
     <title>Ants Marketing</title>
-    <link rel="stylesheet" href="css/app.min.css">
-    <script src="js/app.min.js"></script>
+    <link rel="stylesheet" href="css/app.min.css?v=2">
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-119138144-1"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() {
+            dataLayer.push(arguments);
+        }
+        gtag('js', new Date());
+
+        gtag('config', 'UA-119138144-1');
+    </script>
 </head>
 <body>
-
-
+<div id="holder">
+    <svg class="filter" version="1.1">
+        <defs>
+            <filter id="gooeyness">
+                <feGaussianBlur in="SourceGraphic" stdDeviation="10" result="blur"/>
+                <feColorMatrix in="blur" mode="matrix" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 20 -10"
+                               result="gooeyness"/>
+                <feComposite in="SourceGraphic" in2="gooeyness" operator="atop"/>
+            </filter>
+        </defs>
+    </svg>
+    <img src="img/logo_black.png" alt="logo" class="logo">
+    <div class="dots">
+        <div class="dot mainDot"></div>
+        <div class="dot"></div>
+        <div class="dot"></div>
+        <div class="dot"></div>
+        <div class="dot"></div>
+    </div>
+</div>
 <header>
     <div class="bg">
         <div class="container">
             <img src="img/svg/logo_white.svg" alt="logo" class="logo">
             <div class="pull-right">
-                <span class="contacts phone">+38 (096) 510 83 82</span>
+                <span class="contacts phone">+380 (63) 876 15 31</span>
                 <span class="contacts email">info@ants.marketing</span>
                 <a href="#feedback_form" class="btn scroll-down">Заказать консультацию</a>
             </div>
@@ -25,9 +55,10 @@
 </header>
 <section class="section-1">
     <div class="background">
-        <video autoplay muted loop class="ants-video" poster="img/ants.jpg">
-            <source src="video/bg_first.mp4" type="video/mp4 codecs='avc1.42E01E, mp4a.40.2'">
-            <source src="video/bg_first.webm" type='video/webm; codecs="vp8, vorbis"'>
+        <video muted loop class="ants-video" id="video-1" poster="img/ants.jpg" preload="auto" playsinline>
+            <source src="video/bg_first.mp4" type="video/mp4">
+            <source src="video/bg_first.webm" type='video/webm'>
+            Your browser does not support the video tag.
         </video>
         <div class="container">
             <img src="img/click.png" alt="click" class="click">
@@ -188,9 +219,9 @@
     </div>
 </section>
 <section class="section-6 background">
-    <video autoplay muted loop class="ants-video" poster="img/leaves.jpg">
-        <source src="video/bg_last.mp4" type="video/mp4 codecs='avc1.42E01E, mp4a.40.2'">
-        <source src="video/bg_last.webm" type='video/webm; codecs="vp8, vorbis"'>
+    <video muted loop class="ants-video" id="video-2" poster="img/leaves.jpg" preload="auto" playsinline>
+        <source src="video/bg_last.mp4" type="video/mp4">
+        <source src="video/bg_last.webm" type='video/webm'>
     </video>
     <div class="container">
         <div class="title">
@@ -199,17 +230,20 @@
         <form class="row" method="post" action="/test.php" enctype="multipart/form-data" accept-charset="UTF-8"
               id="contact-form">
             <div class="col-lg-4">
-                <input type="text" class="white-input" placeholder="Ваше имя" name="fName" id="fName" data-error="#error-name">
+                <input type="text" class="white-input" placeholder="Ваше имя" name="fName" id="fName"
+                       data-error="#error-name">
                 <div id="error-name"></div>
 
             </div>
             <div class="col-lg-4">
-                <input type="text" class="white-input" placeholder="Ваш e-mail" name="email" id="email" data-error="#error-email">
+                <input type="text" class="white-input" placeholder="Ваш e-mail" name="email" id="email"
+                       data-error="#error-email">
                 <div id="error-email"></div>
 
             </div>
             <div class="col-lg-4">
-                <input type="text" class="white-input" placeholder="Ваш телефон" name="tel" id="tel" data-error="#error-tel">
+                <input type="text" class="white-input" placeholder="Ваш телефон" name="tel" id="tel"
+                       data-error="#error-tel">
                 <div id="error-tel"></div>
 
             </div>
@@ -220,11 +254,26 @@
         <div class="container">
             <img src="img/svg/logo_white.svg" alt="logo" class="logo">
             <div class="pull-right">
-                <span class="contacts phone">+38 (096) 510 83 82</span>
+                <span class="contacts phone">+380 (63) 876 15 31</span>
                 <span class="contacts email">info@ants.marketing</span>
             </div>
         </div>
     </footer>
 </section>
+<script src="js/app.min.js?v=3"></script>
+<script>
+    $(function () {
+        var holder = $('#holder'),
+            preloader = holder.find($('.dots'));
+        preloader.addClass('animated bounceOut');
+        holder.delay(1000).fadeOut(500);
+
+        $("video").each(function(){ this.play();});
+
+        setTimeout(function(){
+            document.getElementById('video-1').play();
+        }, 1);
+    });
+</script>
 </body>
 </html>
