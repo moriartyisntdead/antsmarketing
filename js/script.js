@@ -1,4 +1,19 @@
 $(function () {
+
+
+    const backgroundVideo = new BackgroundVideo('.bv-video', {
+        src: [
+            '../video/bg_first.mp4',
+            '../video/bg_first.webm'
+        ],
+        onReady: function () {
+            // Use onReady() to prevent flickers or force loading state
+            const vidParent = document.querySelector(`.${this.bvVideoWrapClass}`);
+            vidParent.classList.add('bv-video-wrap--ready');
+        }
+    });
+
+
     //document.body.style.zoom="90%"
     $("video[autoplay]").each(function(){ this.play(); });
     //1st canvas

@@ -18,6 +18,7 @@ var scriptsSrc = [
     'js/promise.min.js',
     'js/jquery.validate.js',
     'js/jquery.mask.min.js',
+    'js/backgroundVideo.js',
     'js/script.js'
 ];
 
