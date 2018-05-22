@@ -223,6 +223,13 @@ header {
   height: 900px;
   position: relative;
   text-align: center;
+  .section-1-text {
+    position: absolute;
+    top: 0;
+    right: 0;
+    left: 0;
+    bottom: 0;
+  }
   .click {
     position: relative;
     left: 442px;
