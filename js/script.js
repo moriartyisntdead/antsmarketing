@@ -14,6 +14,19 @@ $(function () {
     });
 
 
+    const backgroundVideo2 = new BackgroundVideo('.bv-video-2', {
+        src: [
+            '../video/bg_last.mp4',
+            '../video/bg_last.webm'
+        ],
+        onReady: function () {
+            // Use onReady() to prevent flickers or force loading state
+            const vidParent = document.querySelector(`.${this.bvVideoWrapClass}`);
+            vidParent.classList.add('bv-video-wrap--ready');
+        }
+    });
+
+
     //document.body.style.zoom="90%"
     $("video[autoplay]").each(function(){ this.play(); });
     //1st canvas
@@ -335,4 +348,5 @@ $(function () {
             });
         }
     });
+
 });

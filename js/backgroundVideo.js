@@ -159,7 +159,8 @@
             // this.windowWidth = window.innerWidth;
             // this.windowHeight = window.innerHeight;
             this.windowWidth = document.documentElement.clientWidth;
-            this.windowHeight = window.innerHeight;
+            // this.windowHeight = window.innerHeight;
+            this.windowHeight = document.getElementById('section-1').offsetHeight;
         }
 
         /**
@@ -213,10 +214,12 @@
         scaleObject() {
             const heightScale = this.windowWidth / this.options.originalVideoW;
             const widthScale = this.windowHeight / this.options.originalVideoH;
+
             let scaleFactor;
 
             this.options.bvVideoWrap.style.width = `${this.windowWidth}px`;
             this.options.bvVideoWrap.style.height = `${this.windowHeight}px`;
+
 
             scaleFactor = heightScale > widthScale ? heightScale : widthScale;
 
@@ -227,6 +230,8 @@
             const videoWidth = scaleFactor * this.options.originalVideoW;
             const videoHeight = scaleFactor * this.options.originalVideoH;
 
+            // this.el.style.width = `${videoWidth}px`;
+            // this.el.style.height = `${videoHeight}px`;
             this.el.style.width = `${videoWidth}px`;
             this.el.style.height = `${videoHeight}px`;
 
