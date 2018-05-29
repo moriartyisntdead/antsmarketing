@@ -31,9 +31,9 @@ var stylesSrc = [
 
 gulp.task('js:build', function () {
     gulp.src(scriptsSrc)
-        .pipe(babel({
-            presets: ['env']
-        }))
+        // .pipe(babel({
+        //     presets: ['env']
+        // }))
         .pipe(uglify({}))
         .pipe(concat('app.min.js')) // Объединяет всё в один файл
         .pipe(gulp.dest('js'))
@@ -59,9 +59,9 @@ gulp.task('default', ['js:build', 'style:build'], function () {
 
 gulp.task('dev:js:build', function () {
     gulp.src(scriptsSrc)
-        .pipe(babel({
-            presets: ['env']
-        }))
+        // .pipe(babel({
+        //     presets: ['env']
+        // }))
         .on('error', function (err) { gutil.log(gutil.colors.red('[Error]'), err.toString()); })
         .pipe(concat('app.min.js')) // Объединяет всё в один файл
         .pipe(gulp.dest('js'))

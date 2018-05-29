@@ -1,27 +1,20 @@
 $(function () {
 
 
-    const backgroundVideo = new BackgroundVideo('.bv-video', {
-        src: [
-            '../video/bg_first.mp4',
-            '../video/bg_first.webm'
-        ],
-        onReady: function () {
+    var backgroundVideo = new BackgroundVideo('.bv-video', {
+        src: ['../video/bg_first.mp4', '../video/bg_first.webm'],
+        onReady: function onReady() {
             // Use onReady() to prevent flickers or force loading state
-            const vidParent = document.querySelector(`.${this.bvVideoWrapClass}`);
+            var vidParent = document.querySelector('.' + this.bvVideoWrapClass);
             vidParent.classList.add('bv-video-wrap--ready');
         }
     });
 
-
-    const backgroundVideo2 = new BackgroundVideo('.bv-video-2', {
-        src: [
-            '../video/bg_last.mp4',
-            '../video/bg_last.webm'
-        ],
-        onReady: function () {
+    var backgroundVideo2 = new BackgroundVideo('.bv-video-2', {
+        src: ['../video/bg_last.mp4', '../video/bg_last.webm'],
+        onReady: function onReady() {
             // Use onReady() to prevent flickers or force loading state
-            const vidParent = document.querySelector(`.${this.bvVideoWrapClass}`);
+            var vidParent = document.querySelector('.' + this.bvVideoWrapClass);
             vidParent.classList.add('bv-video-wrap--ready');
         }
     });
