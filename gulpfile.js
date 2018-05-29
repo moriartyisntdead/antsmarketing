@@ -7,7 +7,9 @@ var gulp = require('gulp'),
     autoprefixer = require('gulp-autoprefixer'),     // Префиксы для CSS
     cssnano = require('gulp-cssnano'),   // Минификация CSS
     postcss = require('gulp-postcss'),   // PostCSS
-    watch = require('gulp-watch');
+    watch = require('gulp-watch'),
+    babel = require('gulp-babel'),
+    gutil = require('gulp-util');
 
 
 var scriptsSrc = [
@@ -29,9 +31,10 @@ var stylesSrc = [
 
 gulp.task('js:build', function () {
     gulp.src(scriptsSrc)
-    .pipe(uglify({
-
-    }))
+        .pipe(babel({
+            presets: ['env']
+        }))
+        .pipe(uglify({}))
         .pipe(concat('app.min.js')) // Объединяет всё в один файл
         .pipe(gulp.dest('js'))
 });
@@ -56,6 +59,10 @@ gulp.task('default', ['js:build', 'style:build'], function () {
 
 gulp.task('dev:js:build', function () {
     gulp.src(scriptsSrc)
+        .pipe(babel({
+            presets: ['env']
+        }))
+        .on('error', function (err) { gutil.log(gutil.colors.red('[Error]'), err.toString()); })
         .pipe(concat('app.min.js')) // Объединяет всё в один файл
         .pipe(gulp.dest('js'))
 });
